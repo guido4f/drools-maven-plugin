@@ -31,14 +31,14 @@ public class ExtractDrlFromDecisionTable
     /**
      * worksheet to extract
      */
-    @Parameter(defaultValue = "Rules", property = "worksheet", required = false)
+    @Parameter(defaultValue = "Rules", property = "worksheet name", required = false)
     private String worksheet;
 
 
     /**
      * Location of the fileoutput files.
      */
-    @Parameter(defaultValue = "${project.build.directory}/rules", property = "outputDir", required = false)
+    @Parameter(defaultValue = "${project.build.directory}/generates-rules", property = "outputDir", required = false)
     private File outputDirectory;
 
     /**
@@ -97,7 +97,8 @@ public class ExtractDrlFromDecisionTable
     public String extractDrl(final File sourceFile) throws MojoExecutionException {
         final String drl;
         try {
-            drl = getDRL(new FileInputStream(sourceFile));
+            drl = getDRL(new FileInputStream(sourceFile),
+                         this.worksheet);
         } catch (FileNotFoundException e) {
             throw new MojoExecutionException("Failed to get DRL from Source Decision Table :" + sourceFile,
                                              e);

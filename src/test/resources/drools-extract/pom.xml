@@ -13,7 +13,7 @@
   <build>
     <plugins>
       <plugin>
-        <artifactId>maven-my-plugin</artifactId>
+        <artifactId>drools-maven-plugin</artifactId>
         <configuration>
           <!-- Specify the MyMojo parameter -->
           <outputDirectory>target/test-harness/project-to-test</outputDirectory>
